@@ -1,0 +1,38 @@
+# Ignore le dossier target (build output)
+target/
+
+# Fichiers temporaires de Cargo
+**/*.rs.bk
+Cargo.lock
+
+# Ignore les fichiers générés par rustup / cargo install
+**/*.crate
+
+# Node dupliqué pour éviter les problèmes
+debug/
+release/
+
+# Fichiers spécifiques à l'éditeur
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers de logs
+*.log
+
+# Fichiers temporaires
+*.tmp
+*.bak
+*.old
+
+# Ignore les binaires éventuels
+*.exe
+*.dll
+*.so
+*.dylib
+*.out
