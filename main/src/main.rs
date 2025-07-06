@@ -10,6 +10,11 @@ fn main() {
     let mut res = String::new();
     let infile = std::fs::read_to_string(clap.value_of("input").unwrap()).expect("could not read file");
     let ps = Parser::new(&infile);
+
+    let ps:Vec<Event> = ps.into_iter().collect();
+    for p in &ps{
+        println!("{:?}", p)
+    }
     push_html(&mut res, ps.into_iter());
     println!("{}", res);
 }
