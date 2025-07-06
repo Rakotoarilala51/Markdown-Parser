@@ -1,10 +1,15 @@
 use clap::{clap_app, crate_version};
+use pulldown_cmark::{html::push_html, Event, Parser};
 fn main() {
-    let _clap = clap_app!(main=> 
+    let clap = clap_app!(main=> 
     (version:crate_version!())
     (author:"The Ramaitre")
     (about:"render markdown as you like")
     (@arg input: +required "Sets the input file"))
     .get_matches();
-    println!("Hello, world!");
+    let mut res = String::new();
+    let infile = std::fs::read_to_string(clap.value_of("input").unwrap()).expect("could not read file");
+    let ps = Parser::new(&infile);
+    push_html(&mut res, ps.into_iter());
+    println!("{}", res);
 }
